@@ -1,0 +1,64 @@
+1.Spring 依赖注入
+	a.接口注入
+	b.get/set
+		<bean name="" class="">
+			<property name="" ref="" />
+		</bean>	
+		<bean name="" class="">
+			
+		</bean>
+	c.构造器
+		<bean name="" class="">
+			<constructor-arg ref=""></constructor-arg>
+			<constructor-arg ref=""></constructor-arg> 
+		</bean>	
+		<bean name="" class=""></bean>
+		<bean name="" class=""></bean>
+	d.静态工厂  factory-method
+		<!--配置bean,配置后该类由spring管理--> 
+		<bean name="springAction" class="com.bless.springdemo.action.SpringAction" > 
+		<!--(3)使用静态工厂的方法注入对象,对应下面的配置文件(3)--> 
+		<property name="staticFactoryDao" ref="staticFactoryDao"></property> 
+		</property> 
+		</bean> 
+		<!--(3)此处获取对象的方式是从工厂类中获取静态方法--> 
+		<bean name="staticFactoryDao" class="com.bless.springdemo.factory.DaoFactory" factory-				method="getStaticFactoryDaoImpl"></bean> 
+	e.实例工厂  factory-bean  factory-method
+
+2.Spring 面向切面编程
+	<aop:config>
+		<aop:aspect id="" ref="">
+			<aop:pointcut id="" expression="execution()">
+			<aop:before method="" pointcut-ref=""/>
+			<aop:after method="" pointcut-ref=""/>
+		</aop:aspect>
+	</aop:config>
+3.Spring 事务
+  a.声明式  
+	都需要配置事务管理器
+	注解
+		<tx:annotation-driven transaction-manager="" />
+	aop切面
+		<tx:advice id="" transaction-manager="">
+			<tx:attributes>
+			<tx:method name="" />
+			</tx:attributes>
+		</tx:advice>
+		<aop:config>
+			<aop:pointcut id="" expression="execution()" />
+			<aop:advisor pointcut-ref="" advice-ref="" />
+		</aop:config>
+  b.编程式    用的比较少
+
+
+4.spring mvc 工作流程	
+
+
+
+
+
+
+
+
+
+
